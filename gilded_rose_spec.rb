@@ -13,7 +13,7 @@ describe GildedRose do
         expect(item.days_remaining).to eql 4
       end
 
-      it 'normail_item_on_sell_date' do
+      it 'normal_item_on_sell_date' do
         item =  GildedRose.new('normal', 10, 0)
         item.tick
 
@@ -234,7 +234,7 @@ describe GildedRose do
 
       context 'on sell date' do
         it 'backstage' do
-          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 50, 0)
+          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 0, 0)
           item.tick
 
           expect(item.quality).to eql 0
@@ -244,7 +244,7 @@ describe GildedRose do
 
       context 'after sell date' do
         it 'backstage' do
-          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 50, -10)
+          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 0, -10)
           item.tick
 
           expect(item.quality).to eql 0
