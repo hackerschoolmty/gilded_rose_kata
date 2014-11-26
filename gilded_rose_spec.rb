@@ -6,7 +6,7 @@ describe GildedRose do
     context "with a normal object" do
 
       it 'normal_item_before_sell' do
-        item =  GildedRose.new('normal', 10, 5)
+        item =  GildedRose.for('normal', 10, 5)
         item.tick
 
         expect(item.quality).to eql 9
@@ -14,7 +14,7 @@ describe GildedRose do
       end
 
       it 'normal_item_on_sell_date' do
-        item =  GildedRose.new('normal', 10, 0)
+        item =  GildedRose.for('normal', 10, 0)
         item.tick
 
         expect(item.quality).to eql 8
@@ -22,7 +22,7 @@ describe GildedRose do
       end
 
       it 'normal_item_after_sell_date' do
-        item =  GildedRose.new('normal', 10, -10)
+        item =  GildedRose.for('normal', 10, -10)
         item.tick
 
         expect(item.quality).to eql 8
@@ -30,7 +30,7 @@ describe GildedRose do
       end
 
       it 'normal_item_on_zero_quality' do
-        item =  GildedRose.new('normal', 0, 5)
+        item =  GildedRose.for('normal', 0, 5)
         item.tick
 
         expect(item.quality).to eql 0
@@ -42,7 +42,7 @@ describe GildedRose do
 
       context 'before_sell' do
         it 'brie_item' do
-          item =  GildedRose.new('Aged Brie', 10, 5)
+          item =  GildedRose.for('Aged Brie', 10, 5)
           item.tick
 
           expect(item.quality).to eql 11
@@ -50,7 +50,7 @@ describe GildedRose do
         end
 
         it 'brie_item_with_max_quality' do
-          item =  GildedRose.new('Aged Brie', 50, 5)
+          item =  GildedRose.for('Aged Brie', 50, 5)
           item.tick
 
           expect(item.quality).to eql 50
@@ -60,7 +60,7 @@ describe GildedRose do
 
       context 'on_sell_date' do
         it 'brie_item' do
-          item =  GildedRose.new('Aged Brie', 10, 0)
+          item =  GildedRose.for('Aged Brie', 10, 0)
           item.tick
 
           expect(item.quality).to eql 12
@@ -68,7 +68,7 @@ describe GildedRose do
         end
 
         it 'brie_item_near_max_quality' do
-          item =  GildedRose.new('Aged Brie', 49, 5)
+          item =  GildedRose.for('Aged Brie', 49, 5)
           item.tick
 
           expect(item.quality).to eql 50
@@ -76,7 +76,7 @@ describe GildedRose do
         end
 
         it 'brie_item_with_max_quality' do
-          item =  GildedRose.new('Aged Brie', 50, 5)
+          item =  GildedRose.for('Aged Brie', 50, 5)
           item.tick
 
           expect(item.quality).to eql 50
@@ -86,7 +86,7 @@ describe GildedRose do
 
       context 'after_sell_date' do
         it 'brie_item' do
-          item =  GildedRose.new('Aged Brie', 10, -10)
+          item =  GildedRose.for('Aged Brie', 10, -10)
           item.tick
 
           expect(item.quality).to eql 12
@@ -94,7 +94,7 @@ describe GildedRose do
         end
 
         it 'brie_item' do
-          item =  GildedRose.new('Aged Brie', 10, -10)
+          item =  GildedRose.for('Aged Brie', 10, -10)
           item.tick
 
           expect(item.quality).to eql 12
@@ -105,7 +105,7 @@ describe GildedRose do
 
     context 'with a sulfuras' do
       it 'sulfuras' do
-        item =  GildedRose.new('Sulfuras, Hand of Ragnaros', 80, 5)
+        item =  GildedRose.for('Sulfuras, Hand of Ragnaros', 80, 5)
         item.tick
 
         expect(item.quality).to eql 80
@@ -113,7 +113,7 @@ describe GildedRose do
       end
 
       it 'sulfuras_before_sell_date' do
-        item =  GildedRose.new('Sulfuras, Hand of Ragnaros', 80, 5)
+        item =  GildedRose.for('Sulfuras, Hand of Ragnaros', 80, 5)
         item.tick
 
         expect(item.quality).to eql 80
@@ -121,7 +121,7 @@ describe GildedRose do
       end
 
       it 'sulfuras_on_sell_date' do
-        item =  GildedRose.new('Sulfuras, Hand of Ragnaros', 80, 0)
+        item =  GildedRose.for('Sulfuras, Hand of Ragnaros', 80, 0)
         item.tick
 
         expect(item.quality).to eql 80
@@ -129,7 +129,7 @@ describe GildedRose do
       end
 
       it 'sulfuras_after_sell_date' do
-        item =  GildedRose.new('Sulfuras, Hand of Ragnaros', 80, -10)
+        item =  GildedRose.for('Sulfuras, Hand of Ragnaros', 80, -10)
         item.tick
 
         expect(item.quality).to eql 80
@@ -139,7 +139,7 @@ describe GildedRose do
 
     context 'with a backstage object' do
       it 'backstage' do
-        item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 10, 5)
+        item =  GildedRose.for('Backstage passes to a TAFKAL80ETC concert', 10, 5)
         item.tick
 
         expect(item.quality).to eql 13
@@ -148,7 +148,7 @@ describe GildedRose do
 
       context 'long before sell date' do
         it 'backstage' do
-          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 10, 11)
+          item =  GildedRose.for('Backstage passes to a TAFKAL80ETC concert', 10, 11)
           item.tick
 
           expect(item.quality).to eql 11
@@ -156,13 +156,13 @@ describe GildedRose do
         end
 
         it 'at max quality' do
-          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 50, 11)
+          item =  GildedRose.for('Backstage passes to a TAFKAL80ETC concert', 50, 11)
         end
       end
 
       context 'medium close to sell date (upper bound)' do
         it 'backstage' do
-          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 10, 10)
+          item =  GildedRose.for('Backstage passes to a TAFKAL80ETC concert', 10, 10)
           item.tick
 
           expect(item.quality).to eql 12
@@ -170,7 +170,7 @@ describe GildedRose do
         end
 
         it 'at max quality' do
-          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 50, 11)
+          item =  GildedRose.for('Backstage passes to a TAFKAL80ETC concert', 50, 11)
           item.tick
 
           expect(item.quality).to eql 50
@@ -180,7 +180,7 @@ describe GildedRose do
 
       context 'medium close to sell date (lower bound)' do
         it 'backstage' do
-          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 10, 6)
+          item =  GildedRose.for('Backstage passes to a TAFKAL80ETC concert', 10, 6)
           item.tick
 
           expect(item.quality).to eql 12
@@ -188,7 +188,7 @@ describe GildedRose do
         end
 
         it 'at max quality' do
-          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 50, 11)
+          item =  GildedRose.for('Backstage passes to a TAFKAL80ETC concert', 50, 11)
           item.tick
 
           expect(item.quality).to eql 50
@@ -198,7 +198,7 @@ describe GildedRose do
 
       context 'very close to sell date (upper bound)' do
         it 'backstage' do
-          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 10, 5)
+          item =  GildedRose.for('Backstage passes to a TAFKAL80ETC concert', 10, 5)
           item.tick
 
           expect(item.quality).to eql 13
@@ -206,7 +206,7 @@ describe GildedRose do
         end
 
         it 'at max quality' do
-          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 50, 11)
+          item =  GildedRose.for('Backstage passes to a TAFKAL80ETC concert', 50, 11)
           item.tick
 
           expect(item.quality).to eql 50
@@ -216,7 +216,7 @@ describe GildedRose do
 
       context 'very close to sell date (lower bound)' do
         it 'backstage' do
-          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 10, 1)
+          item =  GildedRose.for('Backstage passes to a TAFKAL80ETC concert', 10, 1)
           item.tick
 
           expect(item.quality).to eql 13
@@ -224,7 +224,7 @@ describe GildedRose do
         end
 
         it 'at max quality' do
-          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 50, 11)
+          item =  GildedRose.for('Backstage passes to a TAFKAL80ETC concert', 50, 11)
           item.tick
 
           expect(item.quality).to eql 50
@@ -234,7 +234,7 @@ describe GildedRose do
 
       context 'on sell date' do
         it 'backstage' do
-          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 0, 0)
+          item =  GildedRose.for('Backstage passes to a TAFKAL80ETC concert', 0, 0)
           item.tick
 
           expect(item.quality).to eql 0
@@ -244,7 +244,7 @@ describe GildedRose do
 
       context 'after sell date' do
         it 'backstage' do
-          item =  GildedRose.new('Backstage passes to a TAFKAL80ETC concert', 0, -10)
+          item =  GildedRose.for('Backstage passes to a TAFKAL80ETC concert', 0, -10)
           item.tick
 
           expect(item.quality).to eql 0
