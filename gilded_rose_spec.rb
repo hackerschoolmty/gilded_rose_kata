@@ -253,32 +253,5 @@ describe GildedRose do
       end
     end
 
-    context 'conjured' do
-      it 'before_sale_date' do
-        pending
-        fail
-      end
-      it 'at_zero_quality' do
-        pending
-        fail
-      end
-      it 'on_sell_date' do
-        pending
-        fail
-      end
-      it 'on_sell_date_at_zero_quality' do
-        pending
-        fail
-      end
-      it 'after_sell_date' do
-        pending
-        fail
-      end
-      it 'after_sell_date_at_zero_quality' do
-        pending
-        fail
-      end
-    end
-
   end
 end
